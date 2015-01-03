@@ -15,4 +15,4 @@ fi
 cd $WERCKER_STEP_ROOT
 wget --directory-prefix=${WERCKER_STEP_ROOT} https://github.com/spf13/hugo/releases/download/v${WERCKER_HUGO_BUILD_VERSION}/hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64.tar.gz
 tar xzf hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64.tar.gz
-${WERCKER_STEP_ROOT}/hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64/hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64 --source="${WERCKER_SOURCE_DIR} ${HUGO_FLAGS}
+${WERCKER_STEP_ROOT}/hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64/hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64 --source="${WERCKER_SOURCE_DIR}" ${HUGO_FLAGS}
