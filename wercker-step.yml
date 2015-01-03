@@ -1,4 +1,4 @@
-name: arjen/hugo-build
+name: hugo-build
 version: 0.0.2
 description: |
     Downloads Hugo and runs it on your source in order to generate your static site.
