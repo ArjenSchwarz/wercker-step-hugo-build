@@ -1,5 +1,7 @@
 # Wercker Step Hugo Build
 
+[![wercker status](https://app.wercker.com/status/837cf1a5869eb00da38dbd6083e35825/m "wercker status")](https://app.wercker.com/project/bykey/837cf1a5869eb00da38dbd6083e35825)
+
 This step will download the specified version of [Hugo](http://gohugo.io) and run this over the source code.
 
 # Parameters
