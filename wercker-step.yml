@@ -1,5 +1,5 @@
 name: hugo-build
-version: 0.0.2
+version: 0.1.0
 description: |
     Downloads Hugo and runs it on your source in order to generate your static site.
 type: build
