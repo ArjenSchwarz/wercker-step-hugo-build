@@ -1,0 +1,16 @@
+name: hugo-build
+version: 0.0.1
+description: |
+    Downloads Hugo and runs it on your source in order to generate your static site.
+properties:
+    version:
+        type: string
+        default: 0.12
+    theme:
+        type: string
+        default: ""
+        required: false
+    flags:
+        type: string
+        default: ""
+        required: false
