@@ -1,4 +1,10 @@
 
+1.1.0 / 2015-03-01 
+==================
+
+ * Update README for new version
+ * Change default Hugo version and update step version
+
 1.0.2 / 2015-01-08 
 ==================
 
