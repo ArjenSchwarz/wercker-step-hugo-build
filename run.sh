@@ -1,7 +1,7 @@
 #/bin/bash
 
 if [ ! -n "$WERCKER_HUGO_BUILD_VERSION" ]; then
-    export WERCKER_HUGO_BUILD_VERSION=0.12
+    export WERCKER_HUGO_BUILD_VERSION=0.13
 fi
 
 if [ ! -n "$WERCKER_HUGO_BUILD_FLAGS" ]; then
