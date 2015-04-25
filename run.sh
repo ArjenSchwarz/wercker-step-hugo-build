@@ -11,6 +11,10 @@ if [ -n "$WERCKER_HUGO_BUILD_THEME" ]; then
     WERCKER_HUGO_BUILD_FLAGS=$WERCKER_HUGO_BUILD_FLAGS" --theme="${WERCKER_HUGO_BUILD_THEME}
 fi
 
+if [ -n "$WERCKER_HUGO_BUILD_CONFIG" ]; then
+    WERCKER_HUGO_BUILD_FLAGS=$WERCKER_HUGO_BUILD_FLAGS" --config="${WERCKER_SOURCE_DIR}/${WERCKER_HUGO_BUILD_CONFIG}
+fi
+
 cd $WERCKER_STEP_ROOT
 wget --directory-prefix=${WERCKER_STEP_ROOT} https://github.com/spf13/hugo/releases/download/v${WERCKER_HUGO_BUILD_VERSION}/hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64.tar.gz
 tar xzf hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64.tar.gz
