@@ -22,6 +22,10 @@ Specifies the version of Hugo to be used, by default this is `0.13`. It is recom
 
 Specifies the theme to be used for the generation of the site. When this isn't defined no theme will be used.
 
+## config (optional)
+
+If you wish to use a different config file than the default `config.toml|yaml|json` you con provide the relative path and name of this file here.
+
 ## flags (optional)
 
 Apart from the theme, other flags can be provided as a single string. These flags will be provided exactly as set.
@@ -35,5 +39,6 @@ build:
     - arjen/hugo-build:
         version: 0.13
         theme: redlounge
+        config: second-config.toml
         flags: --disableSitemap=true
 ```
