@@ -16,7 +16,7 @@ This step does not require any specific wercker box, and should work on any box.
 
 ## version (optional/recommended)
 
-Specifies the version of Hugo to be used, by default this is `0.13`. It is recommended to set this, so you don't accidentally build you site with a version it isn't ready for.
+Specifies the version of Hugo to be used, by default this is `0.14`. It is recommended to set this, so you don't accidentally build you site with a version it isn't ready for.
 
 ## theme (optional)
 
@@ -37,7 +37,7 @@ box: wercker/default
 build:
   steps:
     - arjen/hugo-build:
-        version: 0.13
+        version: 0.14
         theme: redlounge
         config: second-config.toml
         flags: --disableSitemap=true
