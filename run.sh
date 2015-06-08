@@ -1,5 +1,7 @@
 #/bin/bash
 
+LATEST_HUGO_VERSION=0.14
+
 # check if curl is installed
 # Install otherwise
 if [ "$(which curl)" == "" ]; then
@@ -11,8 +13,13 @@ if [ "$(which curl)" == "" ]; then
     fi
 fi
 
+if [ "$WERCKER_HUGO_BUILD_VERSION" == "false" ]; then
+    echo "The Hugo version in your wercker.yml isn't set correctly. Please put quotes around it. We will continue using the latest version ($LATEST_HUGO_VERSION)."
+    export WERCKER_HUGO_BUILD_VERSION=""
+fi
+
 if [ ! -n "$WERCKER_HUGO_BUILD_VERSION" ]; then
-    export WERCKER_HUGO_BUILD_VERSION=0.14
+    export WERCKER_HUGO_BUILD_VERSION=$LATEST_HUGO_VERSION
 fi
 
 if [ ! -n "$WERCKER_HUGO_BUILD_FLAGS" ]; then
