@@ -1,3 +1,14 @@
+1.4.1 / 2015-06-08
+==================
+
+ * Add warning and default to latest for incorrect version
+
+1.4.0 / 2015-06-08 
+==================
+
+ * Improve documentation for Docker workflow
+ * Use curl instead of wget
+
 1.3.0 / 2015-05-27
 ==================
 
