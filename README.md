@@ -16,7 +16,7 @@ This step does not require any specific wercker box, and should work on any box.
 
 ## version (optional/recommended)
 
-Specifies the version of Hugo to be used, by default this is `0.14`. It is recommended to set this, so you don't accidentally build you site with a version it isn't ready for.
+Specifies the version of Hugo to be used, by default this is `"0.14"`. It is recommended to set this, so you don't accidentally build you site with a version it isn't ready for. Due to Wercker not being able to properly handle `0.x` version numbers, you will need to put quotes around the version number.
 
 ## theme (optional)
 
@@ -24,20 +24,33 @@ Specifies the theme to be used for the generation of the site. When this isn't d
 
 ## config (optional)
 
-If you wish to use a different config file than the default `config.toml|yaml|json` you con provide the relative path and name of this file here.
+If you wish to use a different config file than the default `config.toml|yaml|json` you can provide the relative path and name of this file here.
 
 ## flags (optional)
 
-Apart from the theme, other flags can be provided as a single string. These flags will be provided exactly as set.
+Apart from the theme and config file, other flags can be provided as a single string. These flags will be provided exactly as set.
 
-# Example wercker.yml
+# Example wercker.yml (Docker)
+
+```yml
+box: debian
+build:
+  steps:
+    - arjen/hugo-build:
+        version: "0.14"
+        theme: redlounge
+        config: second-config.toml
+        flags: --disableSitemap=true
+```
+
+# Example wercker.yml (Classic)
 
 ```yml
 box: wercker/default
 build:
   steps:
     - arjen/hugo-build:
-        version: 0.14
+        version: "0.14"
         theme: redlounge
         config: second-config.toml
         flags: --disableSitemap=true
