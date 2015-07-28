@@ -1,5 +1,5 @@
 name: hugo-build
-version: 1.4.0
+version: 1.5.0
 description: |
     Downloads Hugo (http://gohugo.io) and runs it on the source code in order to generate the static site.
 type: build
@@ -7,6 +7,7 @@ properties:
     version:
         type: string
         default: "0.14"
+        required: false
     theme:
         type: string
         default: ""
@@ -18,4 +19,8 @@ properties:
     flags:
         type: string
         default: ""
+        required: false
+    force_install:
+        type: string
+        default: false
         required: false

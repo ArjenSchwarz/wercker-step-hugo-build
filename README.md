@@ -18,6 +18,8 @@ This step does not require any specific wercker box, and should work on any box.
 
 Specifies the version of Hugo to be used, by default this is `"0.14"`. It is recommended to set this, so you don't accidentally build you site with a version it isn't ready for. Due to Wercker not being able to properly handle `0.x` version numbers, you will need to put quotes around the version number.
 
+Note that you don't have to provide this if you already have hugo installed. You can override this using the `force_install` parameter.
+
 ## theme (optional)
 
 Specifies the theme to be used for the generation of the site. When this isn't defined no theme will be used.
@@ -29,6 +31,10 @@ If you wish to use a different config file than the default `config.toml|yaml|js
 ## flags (optional)
 
 Apart from the theme and config file, other flags can be provided as a single string. These flags will be provided exactly as set.
+
+## force_install (optional)
+
+If you already have hugo installed in your container, this step will use the installed version. To override this behaviour, set `force_install` to `true`.
 
 # Example wercker.yml (Docker)
 
