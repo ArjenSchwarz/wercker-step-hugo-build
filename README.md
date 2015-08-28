@@ -36,6 +36,10 @@ Apart from the theme and config file, other flags can be provided as a single st
 
 If you already have hugo installed in your container, this step will use the installed version. To override this behaviour, set `force_install` to `true`.
 
+## disable_pygments (optional)
+
+If you don't need [support for pygments](http://gohugo.io/extras/highlighting/), you can speed up the build process by not installing it. Set `disable_pygments` to `true` to disable support for pygments.
+
 # Example wercker.yml (Docker)
 
 ```yml
