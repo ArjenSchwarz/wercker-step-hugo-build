@@ -36,6 +36,34 @@ Apart from the theme and config file, other flags can be provided as a single st
 
 If you already have hugo installed in your container, this step will use the installed version. To override this behaviour, set `force_install` to `true`.
 
+## dev_flags, prod_branches and dev_branches (optional)
+
+These 3 optional parameters allow you to use different build flags for production and development branches. This setting will **override** the `config`, `flags` and `theme` parameters in builds on your development branches.
+
+### How does it work?
+
+First, set `dev_flags` to the flags you would like to use for your development branches. Your production branches will still use `config`, `flags` and `theme`.
+
+Next, set **either** `prod_branches` or `dev_branches`.
+
+`prod_branches` should contain a space delimited list of branches that you would like to mark as *production* branches.
+
+`dev_branches` should contain a space delimited list of branches that you would like to mark as *development* branches.
+
+E.g. with [git flow](http://nvie.com/posts/a-successful-git-branching-model/):
+
+```yml
+box: debian
+build:
+  steps:
+    - arjen/hugo-build:
+        version: "0.14"
+        theme: redlounge
+        config: my-production-config.toml
+        dev_flags: -D -F
+        prod_branches: master
+```
+
 # Example wercker.yml (Docker)
 
 ```yml
