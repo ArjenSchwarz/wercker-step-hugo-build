@@ -1,3 +1,9 @@
+
+1.5.0 / 2015-08-28
+==================
+
+  * Only install hugo if explicitly requested or if hugo is not already installed (provided by [SamuelDeBruyn](https://github.com/SamuelDebruyn))
+
 1.4.1 / 2015-06-08
 ==================
 
