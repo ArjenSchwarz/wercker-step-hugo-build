@@ -23,16 +23,16 @@ install_hugo()
     cd $WERCKER_STEP_ROOT    
     curl -sL https://github.com/spf13/hugo/releases/download/v${WERCKER_HUGO_BUILD_VERSION}/hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64.tar.gz -o ${WERCKER_STEP_ROOT}/hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64.tar.gz
     tar xzf hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64.tar.gz
-    export HUGO_COMMAND=${WERCKER_STEP_ROOT}/hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64/hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64
+    HUGO_COMMAND=${WERCKER_STEP_ROOT}/hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64/hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64
 }
 
 if [ "$WERCKER_HUGO_BUILD_VERSION" == "false" ]; then
     echo "The Hugo version in your wercker.yml isn't set correctly. Please put quotes around it. We will continue using the latest version ($LATEST_HUGO_VERSION)."
-    export WERCKER_HUGO_BUILD_VERSION=""
+    WERCKER_HUGO_BUILD_VERSION=""
 fi
 
 if [ ! -n "$WERCKER_HUGO_BUILD_VERSION" ]; then
-    export WERCKER_HUGO_BUILD_VERSION=$LATEST_HUGO_VERSION
+    WERCKER_HUGO_BUILD_VERSION=$LATEST_HUGO_VERSION
 fi
 
 if [ ! -n "$WERCKER_HUGO_BUILD_FLAGS" ]; then
@@ -48,14 +48,14 @@ if [ -n "$WERCKER_HUGO_BUILD_CONFIG" ]; then
 fi
 
 if [ ! -n "$WERCKER_HUGO_BUILD_FORCE_INSTALL" ]; then
-    export WERCKER_HUGO_BUILD_FORCE_INSTALL=false
+    WERCKER_HUGO_BUILD_FORCE_INSTALL=false
 fi
 
 #check if hugo is already installed in the container
 if (! command_exists "hugo") || $WERCKER_HUGO_BUILD_FORCE_INSTALL = true; then
     install_hugo
 else
-    export HUGO_COMMAND="hugo"
+    HUGO_COMMAND="hugo"
 fi
 
 eval ${HUGO_COMMAND} --source="${WERCKER_SOURCE_DIR}" ${WERCKER_HUGO_BUILD_FLAGS}
