@@ -1,4 +1,11 @@
 
+1.6.0 / 2015-09-06
+==================
+
+  * Add support for different flags on different branches (provided by [SamuelDeBruyn](https://github.com/SamuelDebruyn))
+  * Add support for pygments and pacman (provided by [SamuelDeBruyn](https://github.com/SamuelDebruyn))
+  * Add parameter disable_python (provided by [SamuelDeBruyn](https://github.com/SamuelDebruyn))
+
 1.5.0 / 2015-08-28
 ==================
 
