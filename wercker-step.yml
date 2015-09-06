@@ -20,7 +20,23 @@ properties:
         type: string
         default: ""
         required: false
+    dev_flags:
+        type: string
+        default: ""
+        required: false
+    dev_branches:
+        type: string
+        default: ""
+        required: false
+    prod_branches:
+        type: string
+        default: ""
+        required: false
     force_install:
+        type: string
+        default: false
+        required: false
+    disable_pygments:
         type: string
         default: false
         required: false
