@@ -79,9 +79,8 @@ check_branches ()
         if ! contains_element "$WERCKER_GIT_BRANCH" "${arr[@]}"; then
             return 1
         fi
-    else
-        return 0
     fi
+    return 0
 }
 
 if [ "$WERCKER_HUGO_BUILD_VERSION" == "false" ]; then
@@ -105,7 +104,7 @@ if [ -n "$WERCKER_HUGO_BUILD_CONFIG" ]; then
     WERCKER_HUGO_BUILD_FLAGS=$WERCKER_HUGO_BUILD_FLAGS" --config="${WERCKER_SOURCE_DIR}/${WERCKER_HUGO_BUILD_CONFIG}
 fi
 
-if [ -z "$WERCKER_HUGO_BUILD_DEV_FLAGS" ] && check_branches; then
+if [ -n "$WERCKER_HUGO_BUILD_DEV_FLAGS" ] && check_branches; then
     WERCKER_HUGO_BUILD_FLAGS=${WERCKER_HUGO_BUILD_DEV_FLAGS}
 fi
 
