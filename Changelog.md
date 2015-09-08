@@ -1,4 +1,9 @@
 
+1.6.1 / 2015-09-08
+==================
+
+  * Bugfix: branch checking logic (provided by [SamuelDeBruyn](https://github.com/SamuelDebruyn))
+
 1.6.0 / 2015-09-06
 ==================
 
