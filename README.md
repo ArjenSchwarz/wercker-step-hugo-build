@@ -16,7 +16,7 @@ This step does not require any specific wercker box, and should work on any box.
 
 ## version (optional/recommended)
 
-Specifies the version of Hugo to be used, by default this is `"0.14"`. It is recommended to set this, so you don't accidentally build you site with a version it isn't ready for. Due to Wercker not being able to properly handle `0.x` version numbers, you will need to put quotes around the version number.
+Specifies the version of Hugo to be used, by default this is `"0.15"`. It is recommended to set this, so you don't accidentally build you site with a version it isn't ready for. Due to Wercker not being able to properly handle `0.x` version numbers, you will need to put quotes around the version number.
 
 Note that you don't have to provide this if you already have hugo installed. You can override this using the `force_install` parameter.
 
@@ -61,7 +61,7 @@ box: debian
 build:
   steps:
     - arjen/hugo-build:
-        version: "0.14"
+        version: "0.15"
         theme: redlounge
         config: my-production-config.toml
         dev_flags: -D -F
@@ -75,7 +75,7 @@ box: debian
 build:
   steps:
     - arjen/hugo-build:
-        version: "0.14"
+        version: "0.15"
         theme: redlounge
         config: second-config.toml
         flags: --disableSitemap=true
@@ -88,7 +88,7 @@ box: wercker/default
 build:
   steps:
     - arjen/hugo-build:
-        version: "0.14"
+        version: "0.15"
         theme: redlounge
         config: second-config.toml
         flags: --disableSitemap=true
