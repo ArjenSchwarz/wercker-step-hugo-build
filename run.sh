@@ -45,9 +45,16 @@ install_hugo()
     fi
 
     cd $WERCKER_STEP_ROOT
-    curl -sL https://github.com/spf13/hugo/releases/download/v${WERCKER_HUGO_BUILD_VERSION}/hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64.tar.gz -o ${WERCKER_STEP_ROOT}/hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64.tar.gz
-    tar xzf hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64.tar.gz
-    HUGO_COMMAND=${WERCKER_STEP_ROOT}/hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64/hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64
+    if [ "$WERCKER_HUGO_BUILD_VERSION" == "HEAD" ]; then
+        install_golang
+        export GOPATH=$WERCKER_STEP_ROOT/gopath
+        go get -v github.com/spf13/hugo
+        HUGO_COMMAND=${GOPATH}/bin/hugo
+    else
+        curl -sL https://github.com/spf13/hugo/releases/download/v${WERCKER_HUGO_BUILD_VERSION}/hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64.tar.gz -o ${WERCKER_STEP_ROOT}/hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64.tar.gz
+        tar xzf hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64.tar.gz
+        HUGO_COMMAND=${WERCKER_STEP_ROOT}/hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64/hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64
+    fi
 }
 
 install_pygments()
@@ -62,6 +69,22 @@ install_pygments()
             pacman -S --noconfirm python-pygments
         else
             yum install -y python-pygments
+        fi
+    fi
+}
+
+install_golang()
+{
+    # check if go is installed
+    # install otherwise
+    if ! command_exists go; then
+        update_sources
+        if command_exists apt-get; then
+            apt-get install -y golang git mercurial
+        elif command_exists pacman; then
+            pacman -S --noconfirm go git mercurial
+        else
+            yum install -y golang git mercurial
         fi
     fi
 }
@@ -84,7 +107,7 @@ check_branches ()
 }
 
 if [ "$WERCKER_HUGO_BUILD_VERSION" == "false" ]; then
-    echo "The Hugo version in your wercker.yml isn't set correctly. Please put quotes around it. We will continue using the latest version ($LATEST_HUGO_VERSION)."
+    echo "The Hugo version in your wercker.yml isn't set correctly. Please put quotes around it. We will continue using the latest release ($LATEST_HUGO_VERSION)."
     WERCKER_HUGO_BUILD_VERSION=""
 fi
 

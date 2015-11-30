@@ -18,7 +18,20 @@ This step does not require any specific wercker box, and should work on any box.
 
 Specifies the version of Hugo to be used, by default this is `"0.15"`. It is recommended to set this, so you don't accidentally build you site with a version it isn't ready for. Due to Wercker not being able to properly handle `0.x` version numbers, you will need to put quotes around the version number.
 
-Note that you don't have to provide this if you already have hugo installed. You can override this using the `force_install` parameter.
+Note that you don't have to provide a version if you already have hugo installed. If you wish to install a specific version regardless of what is running on your container, you can override this using the `force_install` parameter.
+
+### HEAD support
+
+New in version 1.8 is support for the `HEAD` version. This will pull in the latest version from GitHub and compile it. This requires you to provide the version as below. Take note that this means using a version of Hugo that is not released and might be unstable, so use this at your own risk.
+
+```yml
+box: debian
+build:
+  steps:
+    - arjen/hugo-build:
+        version: "HEAD"
+```
+
 
 ## theme (optional)
 
