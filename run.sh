@@ -26,7 +26,7 @@ update_sources()
             pacman -Syu
         fi
         SOURCES_UPDATED=true
-    fi 
+    fi
 }
 
 install_hugo()
@@ -43,8 +43,8 @@ install_hugo()
             yum install -y curl
         fi
     fi
-    
-    cd $WERCKER_STEP_ROOT    
+
+    cd $WERCKER_STEP_ROOT
     curl -sL https://github.com/spf13/hugo/releases/download/v${WERCKER_HUGO_BUILD_VERSION}/hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64.tar.gz -o ${WERCKER_STEP_ROOT}/hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64.tar.gz
     tar xzf hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64.tar.gz
     HUGO_COMMAND=${WERCKER_STEP_ROOT}/hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64/hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64
@@ -109,20 +109,20 @@ if [ -n "$WERCKER_HUGO_BUILD_DEV_FLAGS" ] && check_branches; then
 fi
 
 if [ -z "$WERCKER_HUGO_BUILD_FORCE_INSTALL" ]; then
-    WERCKER_HUGO_BUILD_FORCE_INSTALL=false
+    WERCKER_HUGO_BUILD_FORCE_INSTALL="false"
 fi
 
 if [ -z "$WERCKER_HUGO_DISABLE_PYGMENTS" ]; then
-    WERCKER_HUGO_DISABLE_PYGMENTS=false
+    WERCKER_HUGO_DISABLE_PYGMENTS="false"
 fi
 
 # install pygments if it's not disabled
-if $WERCKER_HUGO_DISABLE_PYGMENTS != false; then
+if [ "$WERCKER_HUGO_DISABLE_PYGMENTS" == "false" ]; then
     install_pygments
 fi
 
 #check if hugo is already installed in the container
-if (! command_exists "hugo") || $WERCKER_HUGO_BUILD_FORCE_INSTALL = true; then
+if (! command_exists "hugo") || $WERCKER_HUGO_BUILD_FORCE_INSTALL = "true"; then
     install_hugo
 else
     HUGO_COMMAND="hugo"

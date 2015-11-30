@@ -1,4 +1,9 @@
 
+1.6.2 / 2015-11-30 
+==================
+
+ * Bugfix: Disable Pygments flag works correctly. Fixes #16
+
 1.6.1 / 2015-09-08
 ==================
 
