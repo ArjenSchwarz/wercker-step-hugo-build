@@ -15,15 +15,50 @@ contains_element ()
   return 1
 }
 
+apt_install()
+{
+    if ! command_exists sudo; then
+        apt-get install -y $1
+    else
+        sudo apt-get install -y $1
+    fi
+}
+
+pacman_install()
+{
+    if ! command_exists sudo; then
+        pacman -S --noconfirm $1
+    else
+        sudo pacman -S --noconfirm $1
+    fi
+}
+
+yum_install()
+{
+    if ! command_exists sudo; then
+        yum install -y $1
+    else
+        sudo yum install -y $1
+    fi
+}
+
 SOURCES_UPDATED=false
 update_sources()
 {
     if [ "$SOURCES_UPDATED" = false ] ; then
         if command_exists apt-get; then
-            apt-get update
+            if ! command_exists sudo; then
+                apt-get update
+            else
+                sudo apt-get update
+            fi
         fi
         if command_exists pacman; then
-            pacman -Syu
+            if ! command_exists sudo; then
+                pacman -Syu
+            else
+                sudo pacman -Syu
+            fi
         fi
         SOURCES_UPDATED=true
     fi
@@ -36,11 +71,11 @@ install_hugo()
     if ! command_exists curl; then
         update_sources
         if command_exists apt-get; then
-            apt-get install -y curl
+            apt_install curl
         elif command_exists pacman; then
-            pacman -S --noconfirm curl
+            pacman_install curl
         else
-            yum install -y curl
+            yum_install curl
         fi
     fi
 
@@ -64,11 +99,11 @@ install_pygments()
     if ! command_exists pygmentize; then
         update_sources
         if command_exists apt-get; then
-            apt-get install -y python3-pygments
+            apt_install python3-pygments
         elif command_exists pacman; then
-            pacman -S --noconfirm python-pygments
+            pacman_install python-pygments
         else
-            yum install -y python-pygments
+            yum_install python-pygments
         fi
     fi
 }
@@ -80,11 +115,11 @@ install_golang()
     if ! command_exists go; then
         update_sources
         if command_exists apt-get; then
-            apt-get install -y golang git mercurial
+            apt_install "golang git mercurial"
         elif command_exists pacman; then
-            pacman -S --noconfirm go git mercurial
+            pacman_install "go git mercurial"
         else
-            yum install -y golang git mercurial
+            yum_install "golang git mercurial"
         fi
     fi
 }
