@@ -1,5 +1,5 @@
 
-1.8.2 / 2016-03-05 
+1.8.3 / 2016-03-05 
 ==================
 
  * Install correct pygments on Debian. Fixes #22
