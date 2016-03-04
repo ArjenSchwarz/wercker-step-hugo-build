@@ -1,5 +1,5 @@
 name: hugo-build
-version: 1.8.1
+version: 1.8.2
 description: |
     Downloads Hugo (http://gohugo.io) and runs it on the source code in order to generate the static site.
 type: build
