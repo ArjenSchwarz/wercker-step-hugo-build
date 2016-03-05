@@ -187,5 +187,3 @@ else
 fi
 
 eval ${HUGO_COMMAND} --source="${WERCKER_SOURCE_DIR}" ${WERCKER_HUGO_BUILD_FLAGS}
-
-cp -r * $WERCKER_OUTPUT_DIR
