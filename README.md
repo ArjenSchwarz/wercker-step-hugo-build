@@ -4,13 +4,15 @@
 
 This step will download the specified version of [Hugo](http://gohugo.io) and run this over the source code to generate the static version of your site. This can then automatically be deployed using other steps.
 
+Since version 1.9.0, the step has the latest two versions of Hugo already installed thereby skipping the download part of the step.
+
 # Tutorial
 
 If you are new to Wercker, there is a full tutorial on how to use this step in combination with an automatic deployment step in the [Hugo documentation](http://gohugo.io/tutorials/automated-deployments/).
 
 # Requirements
 
-This step does not require any specific wercker box, and should work on any box.
+This step does not require any specific Wercker box or container, and should work on both the classic and Docker versions.
 
 # Parameters
 
@@ -18,7 +20,7 @@ This step does not require any specific wercker box, and should work on any box.
 
 Specifies the version of Hugo to be used, by default this is `"0.15"`. It is recommended to set this, so you don't accidentally build you site with a version it isn't ready for. Due to Wercker not being able to properly handle `0.x` version numbers, you will need to put quotes around the version number.
 
-Note that you don't have to provide a version if you already have hugo installed. If you wish to install a specific version regardless of what is running on your container, you can override this using the `force_install` parameter.
+Note that you don't have to provide a version if you already have Hugo installed. If you wish to install a specific version regardless of what is running on your container, you can override this using the `force_install` parameter.
 
 ### HEAD support
 
@@ -47,7 +49,7 @@ Apart from the theme and config file, other flags can be provided as a single st
 
 ## force_install (optional)
 
-If you already have hugo installed in your container, this step will use the installed version. To override this behaviour, set `force_install` to `true`.
+If you already have Hugo installed in your container, this step will use the installed version. To override this behaviour, set `force_install` to `true`.
 
 ## disable_pygments (optional)
 
