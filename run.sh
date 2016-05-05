@@ -180,10 +180,15 @@ if [ "$WERCKER_HUGO_DISABLE_PYGMENTS" == "false" ]; then
 fi
 
 #check if hugo is already installed in the container
-if (! command_exists "hugo") || $WERCKER_HUGO_BUILD_FORCE_INSTALL = "true"; then
-    install_hugo
+if (command_exists "hugo") && $WERCKER_HUGO_BUILD_FORCE_INSTALL == "false"; then
+  HUGO_COMMAND="hugo"
 else
-    HUGO_COMMAND="hugo"
+  # check if this version of Hugo is already installed in the step
+  # If it exists, keep the current HUGO_COMMAND, otherwise install Hugo
+  HUGO_COMMAND=${WERCKER_STEP_ROOT}/bin/hugo_$WERCKER_HUGO_BUILD_VERSION
+  if [ ! -f $HUGO_COMMAND ]; then
+    install_hugo
+  fi
 fi
 
 eval ${HUGO_COMMAND} --source="${WERCKER_SOURCE_DIR}" ${WERCKER_HUGO_BUILD_FLAGS}
