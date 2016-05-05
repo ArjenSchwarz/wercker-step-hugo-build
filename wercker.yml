@@ -2,3 +2,18 @@ box: wercker/default
 build:
   steps:
     - validate-wercker-step
+    - install-packages:
+        packages: zip
+    - script:
+        name: Install latest 2 versions of Hugo
+        code: |
+          mkdir ${WERCKER_SOURCE_DIR}/bin
+          curl -sL https://github.com/spf13/hugo/releases/download/v0.15/hugo_0.15_linux_amd64.tar.gz -o hugo_0.15_linux_amd64.tar.gz
+          tar xzf hugo_0.15_linux_amd64.tar.gz
+          mv hugo_0.15_linux_amd64/hugo_0.15_linux_amd64 bin/hugo_0.15
+          rm hugo_0.15_linux_amd64.tar.gz
+          curl -sL https://github.com/spf13/hugo/releases/download/v0.14/hugo_0.14_linux_amd64.tar.gz -o hugo_0.14_linux_amd64.tar.gz
+          tar xzf hugo_0.14_linux_amd64.tar.gz
+          mv hugo_0.14_linux_amd64/hugo_0.14_linux_amd64 bin/hugo_0.14
+          rm hugo_0.14_linux_amd64.tar.gz
+          ls ${WERCKER_SOURCE_DIR/bin}
