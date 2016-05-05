@@ -1,3 +1,9 @@
+
+1.9.2 / 2016-05-05
+==================
+
+  * Fix pygments being installed when not wanted
+  
 1.9.1 / 2016-05-05
 ==================
 
