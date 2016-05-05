@@ -64,20 +64,25 @@ update_sources()
     fi
 }
 
+install_curl()
+{
+  # check if curl is installed
+  # install otherwise
+  if ! command_exists curl; then
+      update_sources
+      if command_exists apt-get; then
+          apt_install curl
+      elif command_exists pacman; then
+          pacman_install curl
+      else
+          yum_install curl
+      fi
+  fi
+}
+
 install_hugo()
 {
-    # check if curl is installed
-    # install otherwise
-    if ! command_exists curl; then
-        update_sources
-        if command_exists apt-get; then
-            apt_install curl
-        elif command_exists pacman; then
-            pacman_install curl
-        else
-            yum_install curl
-        fi
-    fi
+
 
     cd $WERCKER_STEP_ROOT
     if [ "$WERCKER_HUGO_BUILD_VERSION" == "HEAD" ]; then
@@ -186,6 +191,8 @@ else
   # check if this version of Hugo is already installed in the step
   # If it exists, keep the current HUGO_COMMAND, otherwise install Hugo
   HUGO_COMMAND=${WERCKER_STEP_ROOT}/bin/hugo_$WERCKER_HUGO_BUILD_VERSION
+  # Curl needs to be installed to handle (https) calls by Hugo
+  install_curl
   if [ ! -f $HUGO_COMMAND ]; then
     install_hugo
   fi
