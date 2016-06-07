@@ -10,6 +10,7 @@ build:
           mkdir ${WERCKER_SOURCE_DIR}/bin
           curl -sL https://github.com/spf13/hugo/releases/download/v0.16/hugo_0.16_linux-64bit.tgz -o hugo_0.16_linux-64bit.tgz
           tar xzf hugo_0.16_linux-64bit.tgz
+          ls -R .
           mv hugo_0.16_linux-64bit/hugo_0.16_linux-64bit bin/hugo_0.16
           curl -sL https://github.com/spf13/hugo/releases/download/v0.15/hugo_0.15_linux_amd64.tar.gz -o hugo_0.15_linux_amd64.tar.gz
           tar xzf hugo_0.15_linux_amd64.tar.gz
