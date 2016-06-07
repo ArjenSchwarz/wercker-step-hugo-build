@@ -8,9 +8,9 @@ build:
         name: Install latest 2 versions of Hugo
         code: |
           mkdir ${WERCKER_SOURCE_DIR}/bin
-          curl -sL https://github.com/spf13/hugo/releases/download/v0.16/hugo_0.16_linux-amd64.tgz -o hugo_0.16_linux-amd64.tgz
-          tar xzf hugo_0.16_linux-amd64.tgz
-          mv hugo_0.16_linux-amd64/hugo_0.16_linux-amd64 bin/hugo_0.16
+          curl -sL https://github.com/spf13/hugo/releases/download/v0.16/hugo_0.16_linux-64bit.tgz -o hugo_0.16_linux-64bit.tgz
+          tar xzf hugo_0.16_linux-64bit.tgz
+          mv hugo_0.16_linux-64bit/hugo_0.16_linux-64bit bin/hugo_0.16
           curl -sL https://github.com/spf13/hugo/releases/download/v0.15/hugo_0.15_linux_amd64.tar.gz -o hugo_0.15_linux_amd64.tar.gz
           tar xzf hugo_0.15_linux_amd64.tar.gz
           mv hugo_0.15_linux_amd64/hugo_0.15_linux_amd64 bin/hugo_0.15
