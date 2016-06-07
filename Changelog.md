@@ -1,4 +1,10 @@
 
+1.10.0 / 2016-06-08
+===================
+
+ * Fix for version 0.16's different filename
+ * Store 0.16 in the step
+
 1.9.2 / 2016-05-05
 ==================
 
