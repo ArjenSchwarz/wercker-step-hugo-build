@@ -15,9 +15,6 @@ build:
           curl -sL https://github.com/spf13/hugo/releases/download/v0.15/hugo_0.15_linux_amd64.tar.gz -o hugo_0.15_linux_amd64.tar.gz
           tar xzf hugo_0.15_linux_amd64.tar.gz
           mv hugo_0.15_linux_amd64/hugo_0.15_linux_amd64 bin/hugo_0.15
-          curl -sL https://github.com/spf13/hugo/releases/download/v0.14/hugo_0.14_linux_amd64.tar.gz -o hugo_0.14_linux_amd64.tar.gz
-          tar xzf hugo_0.14_linux_amd64.tar.gz
-          mv hugo_0.14_linux_amd64/hugo_0.14_linux_amd64 bin/hugo_0.14
     - script:
         name: Move the important stuff to output
         code: |
