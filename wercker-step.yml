@@ -20,6 +20,10 @@ properties:
         type: string
         default: ""
         required: false
+    basedir:
+        type: string
+        default: ""
+        required: false
     dev_flags:
         type: string
         default: ""
