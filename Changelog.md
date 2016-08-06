@@ -1,4 +1,9 @@
 
+1.11.0 / 2016-08-06
+==================
+
+  * Add support for changing source directory (thanks to [philhug](https://github.com/philhug) and [sword42](https://github.com/sword42))
+
 1.10.1 / 2016-06-09
 ==================
 

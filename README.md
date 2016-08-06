@@ -59,6 +59,10 @@ If you don't need [support for pygments](http://gohugo.io/extras/highlighting/),
 
 These 3 optional parameters allow you to use different build flags for production and development branches. This setting will **override** the `config`, `flags` and `theme` parameters in builds on your development branches.
 
+## basedir (optional)
+
+The basedir flag allows you to set a different directory than the root of the project as your Hugo source directory.
+
 ### How does it work?
 
 First, set `dev_flags` to the flags you would like to use for your development branches. Your production branches will still use `config`, `flags` and `theme`.
