@@ -42,6 +42,15 @@ yum_install()
     fi
 }
 
+apk_install()
+{
+    if ! command_exists sudo; then
+        apk add $1
+    else
+        sudo apk add $1
+    fi
+}
+
 SOURCES_UPDATED=false
 update_sources()
 {
@@ -74,6 +83,8 @@ install_curl()
           apt_install curl
       elif command_exists pacman; then
           pacman_install curl
+      elif command_exists apk; then
+          apk_install curl
       else
           yum_install curl
       fi
@@ -107,6 +118,8 @@ install_pygments()
             apt_install "python-pygments"
         elif command_exists pacman; then
             pacman_install "python-pygments"
+        elif command_exists apk; then
+            apk_install "python-pygments"
         else
             yum_install "python-pygments"
         fi
@@ -123,6 +136,8 @@ install_golang()
             apt_install "golang git mercurial"
         elif command_exists pacman; then
             pacman_install "go git mercurial"
+        elif command_exists apk; then
+            apk_install "python-pygments"
         else
             yum_install "golang git mercurial"
         fi
