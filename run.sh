@@ -137,7 +137,7 @@ install_golang()
         elif command_exists pacman; then
             pacman_install "go git mercurial"
         elif command_exists apk; then
-            apk_install "python-pygments"
+            apk_install "go git mercurial"
         else
             yum_install "golang git mercurial"
         fi
