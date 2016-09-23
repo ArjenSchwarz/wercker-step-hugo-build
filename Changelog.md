@@ -1,4 +1,9 @@
 
+1.12.0 / 2016-09-23
+==================
+
+ * Add support for Alpine (thanks to [alrayyes](https://github.com/alrayyes))
+
 1.11.0 / 2016-08-06
 ==================
 
