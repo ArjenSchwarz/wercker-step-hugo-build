@@ -69,6 +69,13 @@ update_sources()
                 sudo pacman -Syu
             fi
         fi
+        if command_exists apk; then
+            if ! command_exists sudo; then
+                apk update
+            else
+                sudo apk update
+            fi
+        fi
         SOURCES_UPDATED=true
     fi
 }
