@@ -1,6 +1,6 @@
-#/bin/bash
+#!/bin/bash
 
-LATEST_HUGO_VERSION=0.16
+LATEST_HUGO_VERSION=0.17
 
 command_exists()
 {
@@ -100,8 +100,6 @@ install_curl()
 
 install_hugo()
 {
-
-
     cd $WERCKER_STEP_ROOT
     if [ "$WERCKER_HUGO_BUILD_VERSION" == "HEAD" ]; then
         install_golang
