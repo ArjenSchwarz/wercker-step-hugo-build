@@ -1,4 +1,9 @@
 
+1.13.1 / 2016-10-11
+==================
+
+  * The filestructure for 0.17 was different than expected
+
 1.13.0 / 2016-10-11
 ==================
 
