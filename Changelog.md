@@ -1,4 +1,11 @@
 
+1.14.0 / 2016-12-28
+==================
+
+  * Compatibility for 0.18
+  * Merge pull request #29 from jrbasso/patch-1
+  * Update README to use more recent versions
+
 1.13.1 / 2016-10-11
 ==================
 
