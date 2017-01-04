@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LATEST_HUGO_VERSION=0.18
+LATEST_HUGO_VERSION=0.18.1
 
 command_exists()
 {
@@ -112,9 +112,13 @@ install_hugo()
           curl -sL https://github.com/spf13/hugo/releases/download/v0.16/hugo_0.16_linux-64bit.tgz -o hugo_0.16_linux-64bit.tgz
           tar xzf hugo_0.16_linux-64bit.tgz
           HUGO_COMMAND=${WERCKER_STEP_ROOT}/hugo
-        else
+        elif [ "$WERCKER_HUGO_BUILD_VERSION" == "0.15" ] || [ "$WERCKER_HUGO_BUILD_VERSION" == "0.14" ] || [ "$WERCKER_HUGO_BUILD_VERSION" == "0.13" ]; then
           curl -sL https://github.com/spf13/hugo/releases/download/v${WERCKER_HUGO_BUILD_VERSION}/hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64.tar.gz -o ${WERCKER_STEP_ROOT}/hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64.tar.gz
           tar xzf hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64.tar.gz
+          HUGO_COMMAND=${WERCKER_STEP_ROOT}/hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64/hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64
+        else
+          curl -sL https://github.com/spf13/hugo/releases/download/v${WERCKER_HUGO_BUILD_VERSION}/hugo_${WERCKER_HUGO_BUILD_VERSION}_Linux-64bit.tar.gz -o hugo_${WERCKER_HUGO_BUILD_VERSION}_Linux-64bit.tar.gz
+          tar xzf hugo_${WERCKER_HUGO_BUILD_VERSION}_Linux-64bit.tar.gz
           HUGO_COMMAND=${WERCKER_STEP_ROOT}/hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64/hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64
         fi
     fi
@@ -125,15 +129,19 @@ install_pygments()
     # check if pygments is installed
     # install otherwise
     if ! command_exists pygmentize; then
-        update_sources
-        if command_exists apt-get; then
-            apt_install "python-pygments"
-        elif command_exists pacman; then
-            pacman_install "python-pygments"
-        elif command_exists apk; then
-            apk_install "python-pygments"
+        if command_exists pip; then
+          pip install Pygments
         else
-            yum_install "python-pygments"
+          update_sources
+          if command_exists apt-get; then
+              apt_install "python-pygments"
+          elif command_exists pacman; then
+              pacman_install "python-pygments"
+          elif command_exists apk; then
+              apk_install "python-pygments"
+          else
+              yum_install "python-pygments"
+          fi
         fi
     fi
 }
@@ -216,7 +224,7 @@ if [ "$WERCKER_HUGO_BUILD_DISABLE_PYGMENTS" == "false" ]; then
 fi
 
 #check if hugo is already installed in the container
-if (command_exists "hugo") && $WERCKER_HUGO_BUILD_FORCE_INSTALL == "false"; then
+if (command_exists "hugo") && "$WERCKER_HUGO_BUILD_FORCE_INSTALL" == "false"; then
   HUGO_COMMAND="hugo"
 else
   # check if this version of Hugo is already installed in the step
