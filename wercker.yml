@@ -11,7 +11,7 @@ build:
           curl -sL https://github.com/spf13/hugo/releases/download/v0.18.1/hugo_0.18.1_Linux-64bit.tar.gz -o hugo_0.18.1_Linux-64bit.tar.gz
           mkdir 0.18.1
           tar xzf hugo_0.18.1_Linux-64bit.tar.gz --directory 0.18.1
-          mv 0.18/hugo_0.18.1_linux_amd64/hugo_0.18.1_linux_amd64 bin/hugo_0.18.1
+          mv 0.18.1/hugo_0.18.1_linux_amd64/hugo_0.18.1_linux_amd64 bin/hugo_0.18.1
           curl -sL https://github.com/spf13/hugo/releases/download/v0.18/hugo_0.18_Linux-64bit.tar.gz -o hugo_0.18_Linux-64bit.tar.gz
           mkdir 0.18
           tar xzf hugo_0.18_Linux-64bit.tar.gz --directory 0.18
