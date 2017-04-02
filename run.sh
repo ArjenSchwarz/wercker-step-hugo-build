@@ -129,6 +129,7 @@ install_pygments()
     # check if pygments is installed
     # install otherwise
     if ! command_exists pygmentize; then
+        echo "Installing Pyments"
         if command_exists pip; then
           pip install Pygments
         else
@@ -218,6 +219,10 @@ if [ -z "$WERCKER_HUGO_BUILD_DISABLE_PYGMENTS" ]; then
     WERCKER_HUGO_BUILD_DISABLE_PYGMENTS="false"
 fi
 
+if [ -z "$WERCKER_HUGO_BUILD_CLEAN_BEFORE" ]; then
+    WERCKER_HUGO_BUILD_CLEAN_BEFORE="true"
+fi
+
 # install pygments if it's not disabled
 if [ "$WERCKER_HUGO_BUILD_DISABLE_PYGMENTS" == "false" ]; then
     install_pygments
@@ -236,5 +241,13 @@ else
     install_hugo
   fi
 fi
+
+# Clean the public/output directory before running Hugo
+if [ "$WERCKER_HUGO_BUILD_CLEAN_BEFORE" == "true" ]; then
+  echo "Cleaning the public directory"
+  rm -rf ${WERCKER_SOURCE_DIR}/${WERCKER_HUGO_BUILD_BASEDIR}/public/*
+fi
+
+echo "Running the Hugo command"
 
 eval ${HUGO_COMMAND} --source="${WERCKER_SOURCE_DIR}/${WERCKER_HUGO_BUILD_BASEDIR}" ${WERCKER_HUGO_BUILD_FLAGS}

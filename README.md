@@ -63,6 +63,10 @@ These 3 optional parameters allow you to use different build flags for productio
 
 The basedir flag allows you to set a different directory than the root of the project as your Hugo source directory.
 
+## clean_before (optional)
+
+Since version 1.15.2 the step will remove the public directory before running, to ensure nothing from previous builds can interfere. This can be disabled by setting `clean_before` to false.
+
 ### How does it work?
 
 First, set `dev_flags` to the flags you would like to use for your development branches. Your production branches will still use `config`, `flags` and `theme`.

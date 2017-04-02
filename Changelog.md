@@ -1,4 +1,14 @@
 
+1.15.2 / 2017-04-02
+==================
+
+  * Automatically clean the public directory before running
+
+1.15.1 / 2017-03-03
+==================
+
+  * Set the actual correct default
+
 1.15.0 / 2017-03-03
 ==================
 
