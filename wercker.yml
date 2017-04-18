@@ -8,10 +8,10 @@ build:
         name: Install latest 2 versions of Hugo
         code: |
           mkdir bin
-          curl -sL https://github.com/spf13/hugo/releases/download/v0.20.1/hugo_0.20.1_Linux-64bit.tar.gz -o hugo_0.20.1_Linux-64bit.tar.gz
-          mkdir 0.20.1
-          tar xzf hugo_0.20.1_Linux-64bit.tar.gz --directory 0.20.1
-          mv 0.20.1/hugo_0.20.1_linux_amd64/hugo_0.20.1_linux_amd64 bin/hugo_0.20.1
+          curl -sL https://github.com/spf13/hugo/releases/download/v0.20.2/hugo_0.20.2_Linux-64bit.tar.gz -o hugo_0.20.2_Linux-64bit.tar.gz
+          mkdir 0.20.2
+          tar xzf hugo_0.20.2_Linux-64bit.tar.gz --directory 0.20.2
+          mv 0.20.2/hugo_0.20.2_linux_amd64/hugo_0.20.1_linux_amd64 bin/hugo_0.20.2
           curl -sL https://github.com/spf13/hugo/releases/download/v0.20/hugo_0.20_Linux-64bit.tar.gz -o hugo_0.20_Linux-64bit.tar.gz
           mkdir 0.20
           tar xzf hugo_0.20_Linux-64bit.tar.gz --directory 0.20
