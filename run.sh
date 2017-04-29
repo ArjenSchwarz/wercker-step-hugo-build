@@ -111,14 +111,18 @@ install_hugo()
         if [ "$WERCKER_HUGO_BUILD_VERSION" == "0.16" ]; then
           curl -sL https://github.com/spf13/hugo/releases/download/v0.16/hugo_0.16_linux-64bit.tgz -o hugo_0.16_linux-64bit.tgz
           tar xzf hugo_0.16_linux-64bit.tgz
-          HUGO_COMMAND=${WERCKER_STEP_ROOT}/hugo
         elif [ "$WERCKER_HUGO_BUILD_VERSION" == "0.15" ] || [ "$WERCKER_HUGO_BUILD_VERSION" == "0.14" ] || [ "$WERCKER_HUGO_BUILD_VERSION" == "0.13" ]; then
           curl -sL https://github.com/spf13/hugo/releases/download/v${WERCKER_HUGO_BUILD_VERSION}/hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64.tar.gz -o ${WERCKER_STEP_ROOT}/hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64.tar.gz
           tar xzf hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64.tar.gz
-          HUGO_COMMAND=${WERCKER_STEP_ROOT}/hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64/hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64
         else
           curl -sL https://github.com/spf13/hugo/releases/download/v${WERCKER_HUGO_BUILD_VERSION}/hugo_${WERCKER_HUGO_BUILD_VERSION}_Linux-64bit.tar.gz -o hugo_${WERCKER_HUGO_BUILD_VERSION}_Linux-64bit.tar.gz
           tar xzf hugo_${WERCKER_HUGO_BUILD_VERSION}_Linux-64bit.tar.gz
+        fi
+
+        # this was the location in 0.16, and again after 0.20.4
+        if [ -x "${WERCKER_STEP_ROOT}/hugo" ]; then
+          HUGO_COMMAND=${WERCKER_STEP_ROOT}/hugo
+        else
           HUGO_COMMAND=${WERCKER_STEP_ROOT}/hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64/hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64
         fi
     fi
