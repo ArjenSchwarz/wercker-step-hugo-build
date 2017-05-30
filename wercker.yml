@@ -8,14 +8,14 @@ build:
         name: Install latest 2 versions of Hugo
         code: |
           mkdir bin
-          curl -sL https://github.com/spf13/hugo/releases/download/v0.20.6/hugo_0.20.6_Linux-64bit.tar.gz -o hugo_0.20.6_Linux-64bit.tar.gz
-          mkdir 0.20.6
-          tar xzf hugo_0.20.6_Linux-64bit.tar.gz --directory 0.20.6
-          mv 0.20.6/hugo bin/hugo_0.20.6
-          curl -sL https://github.com/spf13/hugo/releases/download/v0.20.2/hugo_0.20.2_Linux-64bit.tar.gz -o hugo_0.20.2_Linux-64bit.tar.gz
-          mkdir 0.20.2
-          tar xzf hugo_0.20.2_Linux-64bit.tar.gz --directory 0.20.2
-          mv 0.20.2/hugo_0.20.2_linux_amd64/hugo_0.20.2_linux_amd64 bin/hugo_0.20.2
+          curl -sL https://github.com/spf13/hugo/releases/download/v0.21/hugo_0.21_Linux-64bit.tar.gz -o hugo_0.21_Linux-64bit.tar.gz
+          mkdir 0.21
+          tar xzf hugo_0.21_Linux-64bit.tar.gz --directory 0.21
+          mv 0.21/hugo bin/hugo_0.21
+          curl -sL https://github.com/spf13/hugo/releases/download/v0.20.7/hugo_0.20.7_Linux-64bit.tar.gz -o hugo_0.20.7_Linux-64bit.tar.gz
+          mkdir 0.20.7
+          tar xzf hugo_0.20.7_Linux-64bit.tar.gz --directory 0.20.7
+          mv 0.20.7/hugo bin/hugo_0.20.7
 
     - script:
         name: Move the important stuff to output

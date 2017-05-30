@@ -1,14 +1,25 @@
 
+1.17.0 / 2017-05-30
+==================
+
+  * Update Hugo default to 0.21
+
+1.16.3 / 2017-04-30
+==================
+
+  * make 0.20.6 the default (thanks to [sigma](https://github.com/sigma))
+  * fix hugo command location (thanks to [sigma](https://github.com/sigma))
+
 1.16.2 / 2017-04-18
 ==================
 
   * Update default to Hugo 0.20.2
-  
+
 1.16.1 / 2017-04-16
 ==================
 
   * Update default to Hugo 0.20.1
- 
+
 1.16.0 / 2017-04-11
 ==================
 
@@ -81,7 +92,7 @@
 ==================
 
   * Fix pygments being installed when not wanted
-  
+
 1.9.1 / 2016-05-05
 ==================
 

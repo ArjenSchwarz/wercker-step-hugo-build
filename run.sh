@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LATEST_HUGO_VERSION=0.20.6
+LATEST_HUGO_VERSION=0.21
 
 command_exists()
 {
