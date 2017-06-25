@@ -18,7 +18,7 @@ This step does not require any specific Wercker box or container, and should wor
 
 ## version (optional/recommended)
 
-Specifies the version of Hugo to be used, by default this is `"0.23"`. It is recommended to set this, so you don't accidentally build you site with a version it isn't ready for. Due to Wercker not being able to properly handle `0.x` version numbers, you will need to put quotes around the version number.
+Specifies the version of Hugo to be used, by default this is `"0.24.1"`. It is recommended to set this, so you don't accidentally build you site with a version it isn't ready for. Due to Wercker not being able to properly handle `0.x` version numbers, you will need to put quotes around the version number.
 
 Note that you don't have to provide a version if you already have Hugo installed. If you wish to install a specific version regardless of what is running on your container, you can override this using the `force_install` parameter.
 

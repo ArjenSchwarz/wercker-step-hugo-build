@@ -1,4 +1,15 @@
 
+1.19.0 / 2017-06-25
+==================
+
+ * Update Hugo default to 0.24.1
+
+1.18.0 / 2017-06-17
+==================
+
+ * Update Hugo default to 0.23 (thanks to [sigma](https://github.com/sigma))
+ * Update the Hugo GitHub organization to gohugoio (thanks to [sigma](https://github.com/sigma))
+
 1.17.0 / 2017-05-30
 ==================
 
