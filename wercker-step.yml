@@ -6,7 +6,7 @@ type: build
 properties:
     version:
         type: string
-        default: "0.24.1"
+        default: "0.26"
         required: false
     theme:
         type: string
