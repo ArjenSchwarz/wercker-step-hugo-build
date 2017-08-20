@@ -3,6 +3,7 @@
 ==================
 
  * Update Hugo default to 0.26
+ * Make it easier to update included Hugo versions in wercker.yml
 
 1.19.0 / 2017-06-25
 ==================
