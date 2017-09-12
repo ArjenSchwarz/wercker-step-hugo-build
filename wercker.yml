@@ -7,8 +7,8 @@ build:
     - script:
         name: Install latest 2 versions of Hugo
         code: |
-          CURRENT_HUGO_VERSION="0.26"
-          PREVIOUS_HUGO_VERSION="0.25.1"
+          CURRENT_HUGO_VERSION="0.27"
+          PREVIOUS_HUGO_VERSION="0.26"
           mkdir bin
           curl -sL https://github.com/gohugoio/hugo/releases/download/v${CURRENT_HUGO_VERSION}/hugo_${CURRENT_HUGO_VERSION}_Linux-64bit.tar.gz -o hugo_${CURRENT_HUGO_VERSION}_Linux-64bit.tar.gz
           mkdir ${CURRENT_HUGO_VERSION}
