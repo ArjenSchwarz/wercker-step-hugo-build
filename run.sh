@@ -252,6 +252,9 @@ if [ "$WERCKER_HUGO_BUILD_CLEAN_BEFORE" == "true" ]; then
   rm -rf ${WERCKER_SOURCE_DIR}/${WERCKER_HUGO_BUILD_BASEDIR}/public/*
 fi
 
+# Ensure a content directory is present as per Issue #42
+mkdir -p ${WERCKER_SOURCE_DIR}/${WERCKER_HUGO_BUILD_BASEDIR}/content
+
 echo "Running the Hugo command"
 
 eval ${HUGO_COMMAND} --source="${WERCKER_SOURCE_DIR}/${WERCKER_HUGO_BUILD_BASEDIR}" ${WERCKER_HUGO_BUILD_FLAGS}
