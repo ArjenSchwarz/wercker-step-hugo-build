@@ -10,11 +10,11 @@ build:
           CURRENT_HUGO_VERSION="0.37"
           PREVIOUS_HUGO_VERSION="0.36.1"
           mkdir bin
-          curl -sL https://github.com/gohugoio/hugo/releases/download/v${CURRENT_HUGO_VERSION}/hugo_${CURRENT_HUGO_VERSION}_Linux-64bit.tar.gz -o hugo_${CURRENT_HUGO_VERSION}_Linux-64bit.tar.gz
+          curl -L https://github.com/gohugoio/hugo/releases/download/v${CURRENT_HUGO_VERSION}/hugo_${CURRENT_HUGO_VERSION}_Linux-64bit.tar.gz -o hugo_${CURRENT_HUGO_VERSION}_Linux-64bit.tar.gz
           mkdir ${CURRENT_HUGO_VERSION}
           tar xzf hugo_${CURRENT_HUGO_VERSION}_Linux-64bit.tar.gz --directory ${CURRENT_HUGO_VERSION}
           mv ${CURRENT_HUGO_VERSION}/hugo bin/hugo_${CURRENT_HUGO_VERSION}
-          curl -sL https://github.com/gohugoio/hugo/releases/download/v${PREVIOUS_HUGO_VERSION}/hugo_${PREVIOUS_HUGO_VERSION}_Linux-64bit.tar.gz -o hugo_${PREVIOUS_HUGO_VERSION}_Linux-64bit.tar.gz
+          curl -L https://github.com/gohugoio/hugo/releases/download/v${PREVIOUS_HUGO_VERSION}/hugo_${PREVIOUS_HUGO_VERSION}_Linux-64bit.tar.gz -o hugo_${PREVIOUS_HUGO_VERSION}_Linux-64bit.tar.gz
           mkdir ${PREVIOUS_HUGO_VERSION}
           tar xzf hugo_${PREVIOUS_HUGO_VERSION}_Linux-64bit.tar.gz --directory ${PREVIOUS_HUGO_VERSION}
           mv ${PREVIOUS_HUGO_VERSION}/hugo bin/hugo_${PREVIOUS_HUGO_VERSION}
