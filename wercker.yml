@@ -1,4 +1,4 @@
-box: jparyani/docker@1.0.1
+box: ice/node-ice@1.1.8
 build:
   steps:
     - validate-wercker-step
