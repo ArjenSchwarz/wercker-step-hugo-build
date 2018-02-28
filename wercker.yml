@@ -1,4 +1,4 @@
-box: google/golang
+box: jparyani/docker@1.0.1
 build:
   steps:
     - validate-wercker-step
