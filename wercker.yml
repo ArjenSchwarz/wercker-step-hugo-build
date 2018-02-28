@@ -1,4 +1,4 @@
-box: wercker/default
+box: google/golang
 build:
   steps:
     - validate-wercker-step
