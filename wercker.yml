@@ -1,4 +1,4 @@
-box: ice/node-ice@1.1.8
+box: alpine
 build:
   steps:
     - validate-wercker-step
