@@ -18,7 +18,7 @@ This step does not require any specific Wercker box or container, and should wor
 
 ## version (optional/recommended)
 
-Specifies the version of Hugo to be used, by default this is `"0.37"`. It is recommended to set this, so you don't accidentally build you site with a version it isn't ready for. Due to Wercker not being able to properly handle `0.x` version numbers, you will need to put quotes around the version number.
+Specifies the version of Hugo to be used, by default this is `"0.39"`. It is recommended to set this, so you don't accidentally build you site with a version it isn't ready for. Due to Wercker not being able to properly handle `0.x` version numbers, you will need to put quotes around the version number.
 
 Note that you don't have to provide a version if you already have Hugo installed. If you wish to install a specific version regardless of what is running on your container, you can override this using the `force_install` parameter.
 
@@ -51,9 +51,9 @@ Apart from the theme and config file, other flags can be provided as a single st
 
 If you already have Hugo installed in your container, this step will use the installed version. To override this behaviour, set `force_install` to `true`.
 
-## disable_pygments (optional)
+## install_pygments (optional)
 
-If you don't need [support for pygments](http://gohugo.io/extras/highlighting/), you can speed up the build process by not installing it. Set `disable_pygments` to `true` to disable support for pygments.
+By default Hugo uses the [Chroma for code highlighting](http://gohugo.io/extras/highlighting/). If you prefer to use Pygments, you can still install it with this flag.
 
 ## dev_flags, prod_branches and dev_branches (optional)
 
@@ -84,7 +84,7 @@ box: debian
 build:
   steps:
     - arjen/hugo-build:
-        version: "0.17"
+        version: "0.39"
         theme: redlounge
         config: my-production-config.toml
         dev_flags: -D -F

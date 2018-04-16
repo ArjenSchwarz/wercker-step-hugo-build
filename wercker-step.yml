@@ -40,7 +40,7 @@ properties:
         type: string
         default: false
         required: false
-    disable_pygments:
+    install_pygments:
         type: string
         default: false
         required: false

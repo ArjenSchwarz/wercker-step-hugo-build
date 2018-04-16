@@ -204,8 +204,8 @@ if [ -z "$WERCKER_HUGO_BUILD_FORCE_INSTALL" ]; then
     WERCKER_HUGO_BUILD_FORCE_INSTALL="false"
 fi
 
-if [ -z "$WERCKER_HUGO_BUILD_DISABLE_PYGMENTS" ]; then
-    WERCKER_HUGO_BUILD_DISABLE_PYGMENTS="false"
+if [ -z "$WERCKER_HUGO_BUILD_INSTALL_PYGMENTS" ]; then
+    WERCKER_HUGO_BUILD_INSTALL_PYGMENTS="false"
 fi
 
 if [ -z "$WERCKER_HUGO_BUILD_CLEAN_BEFORE" ]; then
@@ -213,7 +213,7 @@ if [ -z "$WERCKER_HUGO_BUILD_CLEAN_BEFORE" ]; then
 fi
 
 # install pygments if it's not disabled
-if [ "$WERCKER_HUGO_BUILD_DISABLE_PYGMENTS" == "false" ]; then
+if [ "$WERCKER_HUGO_BUILD_INSTALL_PYGMENTS" == "true" ]; then
     install_pygments
 fi
 
