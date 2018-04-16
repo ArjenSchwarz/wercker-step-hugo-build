@@ -12,7 +12,15 @@ If you are new to Wercker, there is a full tutorial on how to use this step in c
 
 # Requirements
 
-This step does not require any specific Wercker box or container, and should work on both the classic and Docker versions.
+This step does not require any specific container.
+
+# Breaking changes in 2.0.0
+
+Version 2.0.0 of this step was released using Wercker's new step building system, and in doing so breaking changes were introduced.
+
+*   There is no longer support for the old (non-Docker) build system. The step might work there, or it might not. Only the Docker stack is verified to be working.
+*   Support for Wercker versions before 0.20.5 is no longer included. The release packages for these older versions differed in name and content. If you require support for these, please use version 1.29 of this step.
+*   Pygment is no longer installed by default due to the inclusion of Chroma from Hugo 0.28. If you still require Pygment you can now install it using the new `install_pygments` parameter.
 
 # Parameters
 
