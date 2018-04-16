@@ -6,7 +6,7 @@ source ${WERCKER_STEP_ROOT}/helpers/functions.sh
 source ${WERCKER_STEP_ROOT}/helpers/dependencies.sh
 source ${WERCKER_STEP_ROOT}/helpers/parameters.sh
 
-# install pygments if it's not disabled
+# install pygments if requested
 if [ "$WERCKER_HUGO_BUILD_INSTALL_PYGMENTS" == "true" ]; then
     install_pygments
 fi

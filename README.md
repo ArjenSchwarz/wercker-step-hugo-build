@@ -4,7 +4,7 @@
 
 This step will download the specified version of [Hugo](http://gohugo.io) and run this over the source code to generate the static version of your site. This can then automatically be deployed using other steps.
 
-Since version 1.9.0, the step has the latest two versions of Hugo already installed thereby skipping the download part of the step.
+To speed things up, this step has the latest two versions of Hugo already installed thereby skipping the download part of the step.
 
 # Tutorial
 
@@ -24,81 +24,23 @@ Version 2.0.0 of this step was released using Wercker's new step building system
 
 # Parameters
 
-All parameters are optional.
+* `version`: (optional) Specify the version of Hugo to be installed. See below for a more extensive explanation.
+* `theme`: (optional) Specifies the theme to be used for the generation of the site. When this isn't defined no theme will be used.
+* `config`: (optional) If you wish to use a different config file than the default `config.toml|yaml|json` you can provide the relative path and name of this file here.
+* `flags`: (optional) Apart from the theme and config file, other flags can be provided as a single string. These flags will be provided exactly as set.
+* `force_install`: (optional) Forces an install of Hugo, regardless of whether it is already installed in the container.
+* `install_pygments`: (optional) Installs Pygments in case you don't want to use the default Chroma.
+* `basedir`: (optional) Set a different directory than the root of the project as your Hugo source directory.
+* `clean_before`: (optional, default true) Removes the `public` directory before build.
+* `dev_flags`: (optional) Set specific flags for your development branches, overrides `flags`, `config`, `themes`.
+* `prod_branches`: (optional) A space delimited list of your production git branches, all other branches will use `dev_flags`. This conflicts with `dev_branches`.
+* `dev_branches`: (optional) A space delimited list of your development git branches, which will then use `dev_flags` parameters. This conflicts with `prod_branches`.
 
-## version (recommended)
+## version parameter
 
-Specifies the version of Hugo to be used, by default this is `"0.39"`. It is recommended to set this, so you don't accidentally build you site with a version it isn't ready for. Due to Wercker not being able to properly handle `0.x` version numbers, you will need to put quotes around the version number.
+This parameter specifies the version of Hugo to be used, by default this is `"0.39"`. It is recommended to set this, so you don't accidentally build you site with a version it isn't ready for. Due to Wercker not being able to properly handle `0.x` version numbers, you will need to put quotes around the version number.
 
-Note that you don't have to provide a version if you already have Hugo installed. If you wish to install a specific version regardless of what is running on your container, you can override this using the `force_install` parameter.
-
-### HEAD support
-
-New in version 1.8 is support for the `HEAD` version. This will pull in the latest version from GitHub and compile it. This requires you to provide the version as below. Take note that this means using a version of Hugo that is not released and might be unstable, so use this at your own risk.
-
-```yml
-box: golang:latest
-build:
-  steps:
-    - arjen/hugo-build:
-        version: "HEAD"
-```
-
-## theme
-
-Specifies the theme to be used for the generation of the site. When this isn't defined no theme will be used.
-
-## config
-
-If you wish to use a different config file than the default `config.toml|yaml|json` you can provide the relative path and name of this file here.
-
-## flags
-
-Apart from the theme and config file, other flags can be provided as a single string. These flags will be provided exactly as set.
-
-## force_install
-
-If you already have Hugo installed in your container, this step will use the installed version. To override this behaviour, set `force_install` to `true`.
-
-## install_pygments
-
-By default Hugo uses [Chroma for code highlighting](http://gohugo.io/extras/highlighting/). If you prefer to use Pygments, you can still install it with this flag.
-
-## dev_flags, prod_branches and dev_branches
-
-These 3 optional parameters allow you to use different build flags for production and development branches. This setting will **override** the `config`, `flags` and `theme` parameters in builds on your development branches.
-
-## basedir
-
-The basedir flag allows you to set a different directory than the root of the project as your Hugo source directory.
-
-## clean_before
-
-Since version 1.15.2 the step will remove the public directory before running, to ensure nothing from previous builds can interfere. This can be disabled by setting `clean_before` to false.
-
-### How does it work?
-
-First, set `dev_flags` to the flags you would like to use for your development branches. Your production branches will still use `config`, `flags` and `theme`.
-
-Next, set **either** `prod_branches` or `dev_branches`.
-
-`prod_branches` should contain a space delimited list of branches that you would like to mark as *production* branches.
-
-`dev_branches` should contain a space delimited list of branches that you would like to mark as *development* branches.
-
-E.g. with [git flow](http://nvie.com/posts/a-successful-git-branching-model/):
-
-```yml
-box: debian
-build:
-  steps:
-    - arjen/hugo-build:
-        version: "0.39"
-        theme: redlounge
-        config: my-production-config.toml
-        dev_flags: -D -F
-        prod_branches: master
-```
+You can specify "HEAD" as the version, which will pull in the latest code of the Hugo `master` branch from GitHub and compile it. Please note that this means using a version of Hugo that is not released and might be unstable, so use this at your own risk.
 
 # Example wercker.yml
 
