@@ -24,7 +24,9 @@ Version 2.0.0 of this step was released using Wercker's new step building system
 
 # Parameters
 
-## version (optional/recommended)
+All parameters are optional.
+
+## version (recommended)
 
 Specifies the version of Hugo to be used, by default this is `"0.39"`. It is recommended to set this, so you don't accidentally build you site with a version it isn't ready for. Due to Wercker not being able to properly handle `0.x` version numbers, you will need to put quotes around the version number.
 
@@ -42,36 +44,35 @@ build:
         version: "HEAD"
 ```
 
-
-## theme (optional)
+## theme
 
 Specifies the theme to be used for the generation of the site. When this isn't defined no theme will be used.
 
-## config (optional)
+## config
 
 If you wish to use a different config file than the default `config.toml|yaml|json` you can provide the relative path and name of this file here.
 
-## flags (optional)
+## flags
 
 Apart from the theme and config file, other flags can be provided as a single string. These flags will be provided exactly as set.
 
-## force_install (optional)
+## force_install
 
 If you already have Hugo installed in your container, this step will use the installed version. To override this behaviour, set `force_install` to `true`.
 
-## install_pygments (optional)
+## install_pygments
 
-By default Hugo uses the [Chroma for code highlighting](http://gohugo.io/extras/highlighting/). If you prefer to use Pygments, you can still install it with this flag.
+By default Hugo uses [Chroma for code highlighting](http://gohugo.io/extras/highlighting/). If you prefer to use Pygments, you can still install it with this flag.
 
-## dev_flags, prod_branches and dev_branches (optional)
+## dev_flags, prod_branches and dev_branches
 
 These 3 optional parameters allow you to use different build flags for production and development branches. This setting will **override** the `config`, `flags` and `theme` parameters in builds on your development branches.
 
-## basedir (optional)
+## basedir
 
 The basedir flag allows you to set a different directory than the root of the project as your Hugo source directory.
 
-## clean_before (optional)
+## clean_before
 
 Since version 1.15.2 the step will remove the public directory before running, to ensure nothing from previous builds can interfere. This can be disabled by setting `clean_before` to false.
 
@@ -99,27 +100,14 @@ build:
         prod_branches: master
 ```
 
-# Example wercker.yml (Docker)
+# Example wercker.yml
 
 ```yml
 box: debian
 build:
   steps:
     - arjen/hugo-build:
-        version: "0.17"
-        theme: redlounge
-        config: second-config.toml
-        flags: --disableSitemap=true
-```
-
-# Example wercker.yml (Classic)
-
-```yml
-box: wercker/default
-build:
-  steps:
-    - arjen/hugo-build:
-        version: "0.17"
+        version: "0.39"
         theme: redlounge
         config: second-config.toml
         flags: --disableSitemap=true

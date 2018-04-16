@@ -11,11 +11,11 @@ if [ "$WERCKER_HUGO_BUILD_INSTALL_PYGMENTS" == "true" ]; then
     install_pygments
 fi
 
-#check if hugo is already installed in the container
+# Check if hugo is already installed in the container
 if (command_exists "hugo") && "$WERCKER_HUGO_BUILD_FORCE_INSTALL" == "false"; then
   HUGO_COMMAND="hugo"
 else
-  # check if this version of Hugo is already installed in the step
+  # Check if this version of Hugo is already installed in the step
   # If it exists, keep the current HUGO_COMMAND, otherwise install Hugo
   HUGO_COMMAND=${WERCKER_STEP_ROOT}/bin/hugo_$WERCKER_HUGO_BUILD_VERSION
   # Curl needs to be installed to handle (https) calls by Hugo
