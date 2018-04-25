@@ -27,5 +27,9 @@ build:
 
 publish:
   steps:
+  - script:
+    name: Testing
+    code: |
+      ls -lh $WERCKER_SOURCE_DIR
   - internal/publish-step:
     owner: arjen
