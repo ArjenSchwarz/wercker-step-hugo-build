@@ -27,4 +27,5 @@ build:
 
 publish:
   steps:
-  - internal/publish-step
+  - internal/publish-step:
+    owner: arjen
