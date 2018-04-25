@@ -33,3 +33,8 @@ publish:
       ls -lh $WERCKER_SOURCE_DIR
   - internal/publish-step:
     owner: arjen
+  - script:
+    name: After
+    code: |
+      ls -lh $WERCKER_SOURCE_DIR
+      ls -lh $WERCKER_OUTPUT_DIR
