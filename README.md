@@ -1,6 +1,6 @@
 # Wercker Step Hugo Build
 
-[![wercker status](https://app.wercker.com/status/837cf1a5869eb00da38dbd6083e35825/m "wercker status")](https://app.wercker.com/project/bykey/837cf1a5869eb00da38dbd6083e35825)
+[![wercker status](https://app.wercker.com/status/358634e8ec6ce30b40b2819ef671e273/s/master "wercker status")](https://app.wercker.com/project/byKey/358634e8ec6ce30b40b2819ef671e273)
 
 This step will download the specified version of [Hugo](http://gohugo.io) and run this over the source code to generate the static version of your site. This can then automatically be deployed using other steps.
 
