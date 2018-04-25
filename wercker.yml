@@ -1,10 +1,10 @@
-box: debian:stable
+box: debian:stable-slim
 build:
   steps:
   - shellcheck:
       files: run.sh
   - install-packages:
-      packages: openssl
+      packages: openssl curl
   - script:
       name: Install latest 2 versions of Hugo
       code: |
