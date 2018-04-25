@@ -22,7 +22,7 @@ build:
   - script:
       name: Move the important stuff to output
       code: |
-        mv README.md run.sh wercker-step.yml wercker.yml bin/ $WERCKER_OUTPUT_DIR
+        mv README.md run.sh step.yml wercker.yml bin/ $WERCKER_OUTPUT_DIR
         ls -lh $WERCKER_OUTPUT_DIR
 
 publish:
