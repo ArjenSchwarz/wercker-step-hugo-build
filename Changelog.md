@@ -1,29 +1,37 @@
 
+2.0.0 / 2018-04-25
+==================
+
+  * Update Hugo default to 0.40
+  * Restructure run.sh
+  * Move away from installing Pygments by default
+  * Drop support for naming standards of Hugo 0.13-0.20.4
+
 1.30.0 / 2018-02-28
 ==================
 
  * Update Hugo default to 0.37
- 
+
 1.29.1 / 2018-02-18
 ==================
 
  * Update Hugo default to 0.36.1
- 
+
 1.29.0 / 2018-02-02
 ==================
 
  * Update Hugo default to 0.36
- 
+
 1.28.0 / 2018-02-02
 ==================
 
  * Update Hugo default to 0.35
- 
+
 1.27.0 / 2018-01-18
 ==================
 
  * Update Hugo default to 0.34
- 
+
 1.26.0 / 2018-01-18
 ==================
 
@@ -38,7 +46,7 @@
 ==================
 
  * Update Hugo default to 0.32.1
- 
+
 1.25.0 / 2018-01-01
 ==================
 
