@@ -1,26 +1,30 @@
-box: wercker/golang
+box: debian:stable-slim
 build:
   steps:
-    - validate-wercker-step
-    - install-packages:
-        packages: zip openssl
-    - script:
-        name: Install latest 2 versions of Hugo
-        code: |
-          CURRENT_HUGO_VERSION="0.37"
-          PREVIOUS_HUGO_VERSION="0.36.1"
-          mkdir bin
-          curl -L https://github.com/gohugoio/hugo/releases/download/v${CURRENT_HUGO_VERSION}/hugo_${CURRENT_HUGO_VERSION}_Linux-64bit.tar.gz -o hugo_${CURRENT_HUGO_VERSION}_Linux-64bit.tar.gz
-          mkdir ${CURRENT_HUGO_VERSION}
-          tar xzf hugo_${CURRENT_HUGO_VERSION}_Linux-64bit.tar.gz --directory ${CURRENT_HUGO_VERSION}
-          mv ${CURRENT_HUGO_VERSION}/hugo bin/hugo_${CURRENT_HUGO_VERSION}
-          curl -L https://github.com/gohugoio/hugo/releases/download/v${PREVIOUS_HUGO_VERSION}/hugo_${PREVIOUS_HUGO_VERSION}_Linux-64bit.tar.gz -o hugo_${PREVIOUS_HUGO_VERSION}_Linux-64bit.tar.gz
-          mkdir ${PREVIOUS_HUGO_VERSION}
-          tar xzf hugo_${PREVIOUS_HUGO_VERSION}_Linux-64bit.tar.gz --directory ${PREVIOUS_HUGO_VERSION}
-          mv ${PREVIOUS_HUGO_VERSION}/hugo bin/hugo_${PREVIOUS_HUGO_VERSION}
+  - shellcheck:
+      files: run.sh
+  - install-packages:
+      packages: openssl curl
+  - script:
+      name: Install latest 2 versions of Hugo
+      code: |
+        CURRENT_HUGO_VERSION="0.40"
+        PREVIOUS_HUGO_VERSION="0.39"
+        mkdir bin
+        curl -L https://github.com/gohugoio/hugo/releases/download/v${CURRENT_HUGO_VERSION}/hugo_${CURRENT_HUGO_VERSION}_Linux-64bit.tar.gz -o hugo_${CURRENT_HUGO_VERSION}_Linux-64bit.tar.gz
+        mkdir ${CURRENT_HUGO_VERSION}
+        tar xzf hugo_${CURRENT_HUGO_VERSION}_Linux-64bit.tar.gz --directory ${CURRENT_HUGO_VERSION}
+        mv ${CURRENT_HUGO_VERSION}/hugo bin/hugo_${CURRENT_HUGO_VERSION}
+        curl -L https://github.com/gohugoio/hugo/releases/download/v${PREVIOUS_HUGO_VERSION}/hugo_${PREVIOUS_HUGO_VERSION}_Linux-64bit.tar.gz -o hugo_${PREVIOUS_HUGO_VERSION}_Linux-64bit.tar.gz
+        mkdir ${PREVIOUS_HUGO_VERSION}
+        tar xzf hugo_${PREVIOUS_HUGO_VERSION}_Linux-64bit.tar.gz --directory ${PREVIOUS_HUGO_VERSION}
+        mv ${PREVIOUS_HUGO_VERSION}/hugo bin/hugo_${PREVIOUS_HUGO_VERSION}
+  - script:
+      name: Move the important stuff to output
+      code: |
+        mv README.md run.sh step.yml wercker.yml bin/ $WERCKER_OUTPUT_DIR
+        ls -lh $WERCKER_OUTPUT_DIR
 
-    - script:
-        name: Move the important stuff to output
-        code: |
-          mv README.md run.sh wercker-step.yml wercker.yml bin/ $WERCKER_OUTPUT_DIR
-          ls -lh $WERCKER_OUTPUT_DIR
+publish:
+  steps:
+  - internal/publish-step

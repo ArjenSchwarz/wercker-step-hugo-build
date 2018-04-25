@@ -1,0 +1,41 @@
+#!/bin/bash
+if [ "$WERCKER_HUGO_BUILD_VERSION" == "false" ]; then
+    echo "The Hugo version in your wercker.yml isn't set correctly. Please put quotes around it. We will continue using the latest release ($LATEST_HUGO_VERSION)."
+    WERCKER_HUGO_BUILD_VERSION=""
+fi
+
+if [ -z "$WERCKER_HUGO_BUILD_VERSION" ]; then
+    WERCKER_HUGO_BUILD_VERSION=$LATEST_HUGO_VERSION
+fi
+
+if [ -z "$WERCKER_HUGO_BUILD_FLAGS" ]; then
+    WERCKER_HUGO_BUILD_FLAGS=""
+fi
+
+if [ -z "$WERCKER_HUGO_BUILD_BASEDIR" ]; then
+    WERCKER_HUGO_BUILD_BASEDIR=""
+fi
+
+if [ -n "$WERCKER_HUGO_BUILD_THEME" ]; then
+    WERCKER_HUGO_BUILD_FLAGS=$WERCKER_HUGO_BUILD_FLAGS" --theme="${WERCKER_HUGO_BUILD_THEME}
+fi
+
+if [ -n "$WERCKER_HUGO_BUILD_CONFIG" ]; then
+    WERCKER_HUGO_BUILD_FLAGS=$WERCKER_HUGO_BUILD_FLAGS" --config="${WERCKER_SOURCE_DIR}/${WERCKER_HUGO_BUILD_BASEDIR}/${WERCKER_HUGO_BUILD_CONFIG}
+fi
+
+if [ -n "$WERCKER_HUGO_BUILD_DEV_FLAGS" ] && check_branches; then
+    WERCKER_HUGO_BUILD_FLAGS=${WERCKER_HUGO_BUILD_DEV_FLAGS}
+fi
+
+if [ -z "$WERCKER_HUGO_BUILD_FORCE_INSTALL" ]; then
+    WERCKER_HUGO_BUILD_FORCE_INSTALL="false"
+fi
+
+if [ -z "$WERCKER_HUGO_BUILD_INSTALL_PYGMENTS" ]; then
+    WERCKER_HUGO_BUILD_INSTALL_PYGMENTS="false"
+fi
+
+if [ -z "$WERCKER_HUGO_BUILD_CLEAN_BEFORE" ]; then
+    WERCKER_HUGO_BUILD_CLEAN_BEFORE="true"
+fi
