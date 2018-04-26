@@ -6,23 +6,23 @@ This step will download the specified version of [Hugo](http://gohugo.io) and ru
 
 To speed things up, this step has the latest two versions of Hugo already installed thereby skipping the download part of the step.
 
-# Tutorial
+## Tutorial
 
 If you are new to Wercker, there is a full tutorial on how to use this step in combination with an automatic deployment step in the [Hugo documentation](http://gohugo.io/tutorials/automated-deployments/).
 
-# Requirements
+## Requirements
 
 This step does not require any specific container.
 
-# Breaking changes in 2.0.0
+## Breaking changes in 2.0.0
 
 Version 2.0.0 of this step was released using Wercker's new step building system, and in doing so breaking changes were introduced.
 
-*   There is no longer support for the old (non-Docker) build system. The step might work there, or it might not. Only the Docker stack is verified to be working.
-*   Support for Wercker versions before 0.20.5 is no longer included. The release packages for these older versions differed in name and content. If you require support for these, please use version 1.29 of this step.
-*   Pygment is no longer installed by default due to the inclusion of Chroma from Hugo 0.28. If you still require Pygment you can now install it using the new `install_pygments` parameter.
+* There is no longer support for the old (non-Docker) build system. The step might work there, or it might not. Only the Docker stack is verified to be working.
+* Support for Wercker versions before 0.20.5 is no longer included. The release packages for these older versions differed in name and content. If you require support for these, please use version 1.29 of this step.
+* Pygment is no longer installed by default due to the inclusion of Chroma from Hugo 0.28. If you still require Pygment you can now install it using the new `install_pygments` parameter.
 
-# Parameters
+## Parameters
 
 * `version`: (optional) Specify the version of Hugo to be installed. See below for a more extensive explanation.
 * `theme`: (optional) Specifies the theme to be used for the generation of the site. When this isn't defined no theme will be used.
@@ -36,13 +36,13 @@ Version 2.0.0 of this step was released using Wercker's new step building system
 * `prod_branches`: (optional) A space delimited list of your production git branches, all other branches will use `dev_flags`. This conflicts with `dev_branches`.
 * `dev_branches`: (optional) A space delimited list of your development git branches, which will then use `dev_flags` parameters. This conflicts with `prod_branches`.
 
-## version parameter
+### version parameter
 
-This parameter specifies the version of Hugo to be used, by default this is `"0.40"`. It is recommended to set this, so you don't accidentally build you site with a version it isn't ready for. Due to Wercker not being able to properly handle `0.x` version numbers, you will need to put quotes around the version number.
+This parameter specifies the version of Hugo to be used, by default this is `"0.40.1"`. It is recommended to set this, so you don't accidentally build you site with a version it isn't ready for. Due to Wercker not being able to properly handle `0.x` version numbers, you will need to put quotes around the version number.
 
 You can specify "HEAD" as the version, which will pull in the latest code of the Hugo `master` branch from GitHub and compile it. Please note that this means using a version of Hugo that is not released and might be unstable, so use this at your own risk.
 
-# Example wercker.yml
+## Example wercker.yml
 
 ```yml
 box: debian
