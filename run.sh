@@ -2,9 +2,9 @@
 
 LATEST_HUGO_VERSION=0.40.1
 
-source "${WERCKER_STEP_ROOT}/helpers/functions.sh"
-source "${WERCKER_STEP_ROOT}/helpers/dependencies.sh"
-source "${WERCKER_STEP_ROOT}/helpers/parameters.sh"
+source ${WERCKER_STEP_ROOT}/helpers/functions.sh
+source ${WERCKER_STEP_ROOT}/helpers/dependencies.sh
+source ${WERCKER_STEP_ROOT}/helpers/parameters.sh
 
 # install pygments if requested
 if [ "$WERCKER_HUGO_BUILD_INSTALL_PYGMENTS" == "true" ]; then
@@ -28,12 +28,12 @@ fi
 # Clean the public/output directory before running Hugo
 if [ "$WERCKER_HUGO_BUILD_CLEAN_BEFORE" == "true" ]; then
   echo "Cleaning the public directory"
-  rm -rf "${WERCKER_SOURCE_DIR}/${WERCKER_HUGO_BUILD_BASEDIR}/public/*"
+  rm -rf ${WERCKER_SOURCE_DIR}/${WERCKER_HUGO_BUILD_BASEDIR}/public/*
 fi
 
 # Ensure a content directory is present as per Issue #42
-mkdir -p "${WERCKER_SOURCE_DIR}/${WERCKER_HUGO_BUILD_BASEDIR}/content"
+mkdir -p ${WERCKER_SOURCE_DIR}/${WERCKER_HUGO_BUILD_BASEDIR}/content
 
 echo "Running the Hugo command"
 
-eval "${HUGO_COMMAND}" --source="${WERCKER_SOURCE_DIR}/${WERCKER_HUGO_BUILD_BASEDIR}" "${WERCKER_HUGO_BUILD_FLAGS}"
+eval ${HUGO_COMMAND} --source="${WERCKER_SOURCE_DIR}/${WERCKER_HUGO_BUILD_BASEDIR}" ${WERCKER_HUGO_BUILD_FLAGS}
