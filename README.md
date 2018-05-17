@@ -52,5 +52,5 @@ build:
         version: "0.40.3"
         theme: redlounge
         config: second-config.toml
-        flags: --disableSitemap=true
+        flags: --disableKinds=["sitemap"]
 ```
