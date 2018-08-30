@@ -38,7 +38,7 @@ Version 2.0.0 of this step was released using Wercker's new step building system
 
 ### version parameter
 
-This parameter specifies the version of Hugo to be used, by default this is `"0.47"`. It is recommended to set this, so you don't accidentally build you site with a version it isn't ready for. Due to Wercker not being able to properly handle `0.x` version numbers, you will need to put quotes around the version number.
+This parameter specifies the version of Hugo to be used, by default this is `"0.48"`. It is recommended to set this, so you don't accidentally build you site with a version it isn't ready for. Due to Wercker not being able to properly handle `0.x` version numbers, you will need to put quotes around the version number.
 
 You can specify "HEAD" as the version, which will pull in the latest code of the Hugo `master` branch from GitHub and compile it. Please note that this means using a version of Hugo that is not released and might be unstable, so use this at your own risk.
 
@@ -49,7 +49,7 @@ box: debian
 build:
   steps:
     - arjen/hugo-build:
-        version: "0.47"
+        version: "0.48"
         theme: redlounge
         config: second-config.toml
         flags: --disableKinds=["sitemap"]
