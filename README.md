@@ -22,6 +22,10 @@ Version 2.0.0 of this step was released using Wercker's new step building system
 * Support for Wercker versions before 0.20.5 is no longer included. The release packages for these older versions differed in name and content. If you require support for these, please use version 1.29 of this step.
 * Pygment is no longer installed by default due to the inclusion of Chroma from Hugo 0.28. If you still require Pygment you can now install it using the new `install_pygments` parameter.
 
+## Hugo Extended Version
+
+Starting with Hugo 0.43 there is an extended version of Hugo available that supports SASS compiling and other functionalities. Per version 2.8.0 of this step, that is the version being used when using Hugo 0.43 or higher.
+
 ## Parameters
 
 * `version`: (optional) Specify the version of Hugo to be installed. See below for a more extensive explanation.

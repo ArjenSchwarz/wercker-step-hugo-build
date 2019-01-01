@@ -21,7 +21,11 @@ install_hugo()
         go get -v github.com/gohugoio/hugo
         HUGO_COMMAND=${GOPATH}/bin/hugo
     else
-        curl -sL https://github.com/gohugoio/hugo/releases/download/v${WERCKER_HUGO_BUILD_VERSION}/hugo_${WERCKER_HUGO_BUILD_VERSION}_Linux-64bit.tar.gz -o hugo_${WERCKER_HUGO_BUILD_VERSION}_Linux-64bit.tar.gz
+        EXTENDED_FLAG=""
+        if [[ "${WERCKER_HUGO_BUILD_VERSION}" > "0.42.2" ]]; then
+            EXTENDED_FLAG="extended_"
+        fi
+        curl -sL https://github.com/gohugoio/hugo/releases/download/v${WERCKER_HUGO_BUILD_VERSION}/hugo_${EXTENDED_FLAG}${WERCKER_HUGO_BUILD_VERSION}_Linux-64bit.tar.gz -o hugo_${WERCKER_HUGO_BUILD_VERSION}_Linux-64bit.tar.gz
         tar xzf hugo_${WERCKER_HUGO_BUILD_VERSION}_Linux-64bit.tar.gz
         HUGO_COMMAND=${WERCKER_STEP_ROOT}/hugo
     fi

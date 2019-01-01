@@ -1,4 +1,10 @@
 
+2.8.0 / 2019-01-01
+==================
+
+ * Update Hugo default to 0.53
+ * Change to using the extended version by default (fixes #48)
+
 2.7.0 / 2018-11-05
 ==================
 
