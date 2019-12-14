@@ -42,7 +42,7 @@ Starting with Hugo 0.43 there is an extended version of Hugo available that supp
 
 ### version parameter
 
-This parameter specifies the version of Hugo to be used, by default this is `"0.58.3"`. It is recommended to set this, so you don't accidentally build you site with a version it isn't ready for. Due to Wercker not being able to properly handle `0.x` version numbers, you will need to put quotes around the version number.
+This parameter specifies the version of Hugo to be used, by default this is `"0.58.3"`. It is recommended to set this, so you don't accidentally build you site with a version it isn't ready for. You can look up valid version numbers [here](https://github.com/gohugoio/hugo/releases/) - note that you need to specify the minor version number (3 in "0.58.3") as well - skipping it will not work. Due to Wercker not being able to properly handle `0.x` version numbers, you will need to put quotes around the version number.
 
 You can specify "HEAD" as the version, which will pull in the latest code of the Hugo `master` branch from GitHub and compile it. Please note that this means using a version of Hugo that is not released and might be unstable, so use this at your own risk.
 
