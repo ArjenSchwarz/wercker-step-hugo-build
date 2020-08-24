@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LATEST_HUGO_VERSION=0.69.2
+LATEST_HUGO_VERSION=0.74.3
 
 source ${WERCKER_STEP_ROOT}/helpers/functions.sh
 source ${WERCKER_STEP_ROOT}/helpers/dependencies.sh
